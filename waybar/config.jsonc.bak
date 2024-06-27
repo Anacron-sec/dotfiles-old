@@ -1,31 +1,29 @@
 {
-    "modules-left": ["hyprland/workspaces"],
+    "layer": "top",
+    "modules-left": ["hyprland/workspaces", "hyprland/mode"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray","network","bluetooth","battery", "wireplumber", "clock","custom/power"],
-
+    "modules-right": ["wireplumber","network","bluetooth","battery", "clock"],
     "hyprland/window": {
         "max-length": 50
     },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%)       |  ",
-        "format-ethernet": "{ifname} ",
-        "format-disconnected": "", 
-        "max-length": 50,
-        "on-click": "iwgtk"
-    },
-    "tray": {
-        "icon-size": 15,
-        "spacing": 10
-    },
     "wireplumber": {
-        "format": "{icon}   {volume}% ",
+        "format": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": ["", "", ""],
         "on-click": "pavucontrol"
     },
-	"custom/power": {
-		"format": " ",
-		"on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Restart' 'shutdown -r now' -b 'Shutdown'  'shutdown -h now' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
+    "network": {
+        //"interface": "wlan0",
+        "format": "{ifname}",
+        "format-wifi": "{essid} ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi": "{essid} {ipaddr} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} {ipaddr} ",
+        "tooltip-format-disconnected": "Disconnected",
+	"on-click":"iwgtk",
+        "max-length": 50
     },
     "bluetooth": {
         "format": " {status}",
@@ -38,9 +36,10 @@
         "on-click": "blueman-manager"
     },
     "battery": {
-        "format": "{icon} ",
-        "format-icons": ["", "", "", "", ""],
-        "tooltip": true,
-        "tooltip-format":"{capacity}% {timeTo}"
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
     }
 }
