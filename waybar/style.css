@@ -85,6 +85,10 @@ window#waybar {
 #temperature.critical {
     color: #cc3436;
 }
+
+#tray menu {
+    background: rgba(0,119,179,0.85);
+}
 /*-----Colors----*/
 /*
  *rgba(0,85,102,1),#005566 --> Indigo(dye)
